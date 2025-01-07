@@ -1,33 +1,39 @@
-import turtle
+from tkinter import *
 
-# 화면 설정
-screen = turtle.Screen()
-screen.bgcolor("white")
+window = Tk()
+window.title("Password Manager")
+window.config(padx=20, pady=20)
 
-# Turtle 객체 생성
-t = turtle.Turtle()
 
-# 첫 번째 그림: 원 그리기
-t.penup()
-t.goto(-100, 0)  # 원의 위치로 이동
-t.pendown()
-t.circle(50)
 
-# 두 번째 그림: 사각형 그리기
-t.penup()
-t.goto(100, 0)  # 사각형의 위치로 이동
-t.pendown()
-for _ in range(4):
-    t.forward(100)
-    t.left(90)
+canvas = Canvas(height=200, width=200)
+MyPass_img = PhotoImage(file="./29/logo.png")
+canvas.create_image(100, 100, image=MyPass_img)
+canvas.grid(column=1, row=0)
 
-# 세 번째 그림: 삼각형 그리기
-t.penup()
-t.goto(0, -150)  # 삼각형의 위치로 이동
-t.pendown()
-for _ in range(3):
-    t.forward(100)
-    t.left(120)
+website_label = Label(text="Website:")
+website_label.grid(column=0, row=1)
 
-# 화면을 유지
-turtle.done()
+website_entry = Entry()
+website_entry.grid(column=1, row=1, columnspan=2, sticky='ew')
+website_entry.focus()
+
+user_id_label = Label(text="Email/Username:")
+user_id_label.grid(column=0)
+
+user_id_entry = Entry(width=35)
+user_id_entry.grid(column=1, row=2, columnspan=2, sticky='ew')
+
+password_label = Label(text="Password:")
+password_label.grid(column=0, row=3)
+
+password_entry = Entry(width=21)
+password_entry.grid(row=3, column=1, sticky='ew')
+
+g_password_button = Button(text="Generate Password")
+g_password_button.grid(row=3, column=2, sticky='ew')
+
+add_button = Button(text="Add", width=36)
+add_button.grid(column=1, row=4, columnspan=2, sticky='ew')
+
+window.mainloop()
